@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://cneftkpo7hnop"]
+
+[ext_resource type="Script" uid="uid://d4enxpgh48m87" path="res://bola.gd" id="1_6ycda"]
+[ext_resource type="Texture2D" uid="uid://biv6ufq2ycect" path="res://assets/sprites/bola.png" id="2_ye40b"]
+[ext_resource type="AudioStream" uid="uid://c16hxfebqs05q" path="res://assets/sons/Colisao_parede.wav" id="3_ye40b"]
+[ext_resource type="AudioStream" uid="uid://dqearhaao4qjb" path="res://assets/sons/Colisao_jogador.wav" id="4_dp8pa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ycda"]
+
+[node name="Bola" type="Area2D"]
+script = ExtResource("1_6ycda")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ye40b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6ycda")
+
+[node name="som_colisao_parede" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ye40b")
+
+[node name="som_colisao_jogador" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dp8pa")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
